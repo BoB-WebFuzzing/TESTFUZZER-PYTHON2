@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  testfuzzer-python:
+    build: .
+    shm_size: 1G
+    volumes:
+      - ./app:/app
+      - ./fuzzer:/home/wc/fuzzer
+    ports:
+      - "4000:4000"
+    container_name: TestFuzzer-Python

@@ -1,0 +1,46 @@
+{
+  "testname": "python",
+  "afl_inst_interpreter_binary": "/httpreqr",
+  "wc_inst_interpreter_binary": "/httpreqr",
+  "binary_options": "--url @@url@@",
+  "server_cmd": ["/home/wc/.virtualenvs/pywitch/bin/python3","/home/wc/.virtualenvs/pywitch/bin/flask", "run"],
+  "server_env_vars": {"FLASK_RUN_PORT": "4000", "FLASK_APP":"/app/app.py", "FLASK_RUN_HOST":"0.0.0.0", "AFL_META_INFO_ID":"4000","STRICT":"3" },
+  "base_url": "http://localhost:4000/",
+  "afl_path": "/afl",
+  "server_up_msg" : "Serving Flask app",
+  "ld_library_path":"/wclibs",
+  "afl_preload":"/wclibs/lib_db_fault_escalator.so",
+  "number_of_trials": 1,
+  "number_of_refuzzes": 3,
+  "server_base_port": 4000,
+  "timeout" : 300,
+  "script_skip_list": [], 
+  "script_random_order": 0,
+  "cores": 1,
+  "request_crawler": {
+    "form_url" : "http://localhost/interface/login/login.php?site=default",
+    "usernameSelector": "#authUser",
+    "usernameValue": "admin",
+    "passwordSelector": "#clearPass",
+    "passwordValue": "password",
+    "submitType": "enter",
+    "positiveLoginMessage": "title=\"Current user\"",
+    "method": "POST",
+    "form_selector": ".form-login",
+    "form_submit_selector": "input[type=submit]",
+    "ignoreValues": [],
+    "urlUniqueIfValueUnique": []
+  },
+
+  "direct":{
+    "url": "http://localhost:4000/",
+    "postData": "",
+    "getData": "",
+    "method": "POST",
+    "cgiBinary": "/php/php-cgi-mysqli-wc",
+    "loginSessionCookie" : "",
+    "mandatoryGet": "",
+    "extra_authorized_requests": []
+  }
+
+}
